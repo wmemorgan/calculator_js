@@ -5,7 +5,11 @@ let zeroKey = document.getElementById("zerokey");
 const displayKey = (i) => {
   return () => { 
     console.log("you clicked on key " + key[i].innerText);
-    screen[0].innerText = key[i].innerText;
+    let display = screen[0];
+    let keyInput = document.createTextNode(key[i].innerText);
+    display.appendChild(keyInput); 
+    // screen[0].innerText = key[i].innerText;
+
   }
 };
 
