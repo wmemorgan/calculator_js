@@ -61,6 +61,14 @@ body, html {
   
 }
 
+#AC {
+  background-color: red;
+}
+
+#CE {
+  background-color: yellow;
+}
+
 #equals {
   grid-row: span 2;
   
