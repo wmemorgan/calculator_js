@@ -20,13 +20,23 @@ body, html {
 
 }
 
-.screen {
+#screen {
   text-align: right;
   width: 93%;
   height: 50px;
   margin: 0px 0px 10px 0px;
   border: 1px solid black;
   padding: 30px 5px 0px 0px;
+  grid-column: 1 / 1;
+  display: grid;
+  grid-template-columns: auto;
+}
+
+#display {
+  grid-column: 1 / 1;
+}
+
+#equation {
   grid-column: 1 / 1;
 }
 

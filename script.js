@@ -1,13 +1,15 @@
-let screen = document.getElementsByClassName("screen");
+let screen = document.getElementById("screen");
+let display = document.getElementById("display");
+let equation = document.getElementById("equation");
 let key = document.getElementsByClassName("key");
 let zeroKey = document.getElementById("zerokey");
 
 const displayKey = (i) => {
   return () => { 
     console.log("you clicked on key " + key[i].innerText);
-    let display = screen[0];
     let keyInput = document.createTextNode(key[i].innerText);
-    display.appendChild(keyInput); 
+    display.innerText = key[i].innerText;
+    equation.appendChild(keyInput); 
     // screen[0].innerText = key[i].innerText;
 
   }
