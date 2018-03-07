@@ -7,8 +7,20 @@ let equals = document.getElementById("equals");
 let ac = document.getElementById("AC");
 let ce = document.getElementById("CE");
 
+const allClear = () => {
+  return () => {
+    console.log("let's clear things up...");
+    display.innerHTML = 0;
+    equation.innerHTML = 0;
+  }
+
+}
+
 const displayKey = (i) => {
   return () => { 
+    if (/[^1-9]/g.test(equation.childNodes[0].nodeValue)) {
+      equation.removeChild(equation.childNodes[0]);
+    }
     console.log("you clicked on key " + key[i].innerText);
     display.innerText = key[i].innerText;
     let keyInput = document.createTextNode(key[i].innerText);
@@ -40,6 +52,7 @@ const calculate = () => {
     display.innerText = answer;
     let keyInput = document.createTextNode(answer);
     equation.appendChild(keyInput); 
+    ce.addEventListener("click", allClear());
   }
 }
 
@@ -47,12 +60,16 @@ const calculate = () => {
 //   displayKey(i);
 // }
 
+display.innerHTML = 0;
+equation.innerHTML = 0;
+
 for (let i = 0; i < key.length; i++) {
   key[i].addEventListener("click", displayKey(i));
 }
 
 equals.addEventListener("click", calculate());
 
+ac.addEventListener("click", allClear());
 ce.addEventListener("click", clearEntry());
 
 
