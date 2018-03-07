@@ -13,8 +13,7 @@ const allClear = () => {
     display.innerHTML = 0;
     equation.innerHTML = 0;
   }
-
-}
+};
 
 const displayKey = (i) => {
   return () => { 
