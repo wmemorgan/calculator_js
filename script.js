@@ -16,10 +16,23 @@ const allClear = () => {
 };
 
 const displayKey = (i) => {
-  return () => { 
+  return () => {
     if (/[^1-9]/g.test(equation.childNodes[0].nodeValue)) {
       equation.removeChild(equation.childNodes[0]);
     }
+
+    if ( /[^0-9]/g.test(key[i].innerText) 
+        && /[^0-9]/g.test(equation.innerText[equation.innerText.length - 1])
+      ) {
+        console.log("Invalid key, bro...");
+        if (!equation.hasChildNodes()) {
+          let resetText = document.createTextNode("0");
+          equation.appendChild(resetText);
+        }
+        // return equation.innerText[equation.innerText.length - 1] = 0;
+        return false;
+    }
+
     console.log("you clicked on key " + key[i].innerText);
     display.innerText = key[i].innerText;
     let keyInput = document.createTextNode(key[i].innerText);
@@ -39,6 +52,7 @@ const clearEntry = () => {
 
 const calculate = () => {
   return () => {
+    let answer = 0;
     let eq = equation.innerText;
     eq = eq.replace(/×/, "*");
     eq = eq.replace(/÷/, "/");
