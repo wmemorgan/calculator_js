@@ -4,6 +4,8 @@ let equation = document.getElementById("equation");
 let key = document.getElementsByClassName("key");
 let zeroKey = document.getElementById("zerokey");
 let equals = document.getElementById("equals");
+let ac = document.getElementById("AC");
+let ce = document.getElementById("CE");
 
 const displayKey = (i) => {
   return () => { 
@@ -13,6 +15,16 @@ const displayKey = (i) => {
     equation.appendChild(keyInput); 
   }
 };
+
+const clearEntry = () => {
+  return () => {
+    console.log("Clear current entry..");
+    display.innerText = 0;
+    equation.removeChild(equation.childNodes[equation.childNodes.length - 2]);
+    equation.removeChild(equation.childNodes[equation.childNodes.length - 1]);
+    console.log("Equation is:", equation.childNodes[equation.childNodes.length - 1]);
+  }
+}
 
 const calculate = () => {
   return () => {
@@ -40,5 +52,7 @@ for (let i = 0; i < key.length; i++) {
 }
 
 equals.addEventListener("click", calculate());
+
+ce.addEventListener("click", clearEntry());
 
 
