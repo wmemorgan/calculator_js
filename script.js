@@ -7,13 +7,21 @@ let zeroKey = document.getElementById("zerokey");
 let equals = document.getElementById("equals");
 let ac = document.getElementById("AC");
 let ce = document.getElementById("CE");
+let operatorClicked = false;
+let equalClicked = false;
+
+// const allClear = () => {
+//   return () => {
+//     console.log("let's clear things up...");
+//     display.innerHTML = '';
+//     equation.innerHTML = '';
+//   }
+// };
 
 const allClear = () => {
-  return () => {
     console.log("let's clear things up...");
     display.innerHTML = '';
     equation.innerHTML = '';
-  }
 };
 
 const clearEntry = () => {
@@ -43,22 +51,33 @@ const displayKey = (i) => {
     //     // return equation.innerText[equation.innerText.length - 1] = 0;
     //     return false;
     // }
-
+    if (/=/.test(equation.innerText[equation.innerText.length - 3] )) {
+      console.log("Calculation complete!");
+      allClear();
+    }
     console.log("you clicked on key " + key[i].innerText);
     //display.innerText = key[i].innerText;
     let keyInput = document.createTextNode(key[i].innerText);
     display.appendChild(keyInput); 
     //equation.appendChild(keyInput); 
+    operatorClicked = false;
   }
 };
 
 const numberEntry = (i) => {
   return () => {
-    let entry = document.createTextNode(display.innerText);
-    equation.appendChild(entry); 
-    let operation = document.createTextNode(operator[i].innerText);
-    equation.appendChild(operation);
-    display.innerText = '';
+    if (operatorClicked) {
+      console.log("Invalid key, bro...");
+      return false;
+    } else {
+      let entry = document.createTextNode(display.innerText);
+      equation.appendChild(entry);
+      let operation = document.createTextNode(operator[i].innerText);
+      equation.appendChild(operation);
+      display.innerText = '';
+      operatorClicked = true;
+    }
+
   }
 };
 
@@ -77,7 +96,8 @@ const calculate = () => {
     display.innerText = answer;
     let keyInput = document.createTextNode(answer);
     equation.appendChild(keyInput); 
-    ce.addEventListener("click", allClear());
+    equalClicked = true;
+    ce.addEventListener("click", allClear);
   }
 }
 
@@ -98,7 +118,7 @@ for (let i = 0; i < operator.length; i++) {
 
 equals.addEventListener("click", calculate());
 
-ac.addEventListener("click", allClear());
+ac.addEventListener("click", allClear);
 ce.addEventListener("click", clearEntry());
 
 
