@@ -10,14 +10,6 @@ let ce = document.getElementById("CE");
 let operatorClicked = false;
 let equalClicked = false;
 
-// const allClear = () => {
-//   return () => {
-//     console.log("let's clear things up...");
-//     display.innerHTML = '';
-//     equation.innerHTML = '';
-//   }
-// };
-
 const allClear = () => {
     console.log("All clear...");
     display.innerHTML = '';
@@ -40,34 +32,30 @@ const clearEntry = () => {
 
 const displayKey = (i) => {
   return () => {
-    // if (/[^1-9]/g.test(equation.childNodes[0].nodeValue)) {
-    //   equation.removeChild(equation.childNodes[0]);
-    // }
-
-    // if ( /[^0-9]/g.test(key[i].innerText) 
-    //     && /[^0-9]/g.test(equation.innerText[equation.innerText.length - 1])
-    //   ) {
-    //     console.log("Invalid key, bro...");
-    //     if (!equation.hasChildNodes()) {
-    //       let resetText = document.createTextNode("0");
-    //       equation.appendChild(resetText);
-    //     }
-    //     // return equation.innerText[equation.innerText.length - 1] = 0;
-    //     return false;
-    // }
-    if (/=/.test(equation.innerText[equation.innerText.length - 3] )) {
-      console.log("Calculation complete!");
-      equalClicked = false;
-      allClear();
+    if (!display.hasChildNodes() && /[^1-9]/g.test(key[i].innerText)) {
+      console.log("Can't start with a zero...");
+      return false;
     }
-    console.log("you clicked on key " + key[i].innerText);
+
+    if (/=/.test(equation.innerText)) {
+      if (/[^1-9]/g.test(key[i].innerText)) {
+        console.log("Can't start with a zero...");
+        return false;
+      } else {
+          console.log("Calculation complete!");
+          equalClicked = false;
+          allClear();
+        }
+    }
+    console.log("You clicked on key " + key[i].innerText);
     //display.innerText = key[i].innerText;
     let keyInput = document.createTextNode(key[i].innerText);
-    display.appendChild(keyInput); 
+    display.appendChild(keyInput);
     //equation.appendChild(keyInput); 
     operatorClicked = false;
     equalClicked = false;
-  }
+
+    }
 };
 
 const numberEntry = (i) => {
@@ -83,7 +71,6 @@ const numberEntry = (i) => {
       display.innerText = '';
       operatorClicked = true;
     }
-
   }
 };
 
