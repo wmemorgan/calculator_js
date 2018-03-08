@@ -61,7 +61,7 @@ const displayKey = (i) => {
 const numberEntry = (i) => {
   return () => {
     if (operatorClicked) {
-      console.log("Invalid key, bro...");
+      console.log("Too many operator key entries, bro...");
       return false;
     } else {
       let entry = document.createTextNode(display.innerText);
@@ -76,20 +76,26 @@ const numberEntry = (i) => {
 
 const calculate = () => {
   return () => {
-    let answer = 0;
-    let eq = equation.innerText;
-    eq = eq.replace(/×/, "*");
-    eq = eq.replace(/÷/, "/");
-    eq = eq.split('');
-    eq.splice(-1, 1);
-    eq = eq.join('');
-    answer = eval(eq);
-    console.log("This equation is:", eq);
-    console.log("The answer is:", answer);
-    display.innerText = answer;
-    let keyInput = document.createTextNode(answer);
-    equation.appendChild(keyInput); 
-    equalClicked = true;
+    if (equalClicked) {
+      console.log("Can't enter the equal key again, bro...");
+      return false;
+    } 
+    else {
+      let answer = 0;
+      let eq = equation.innerText;
+      eq = eq.replace(/×/, "*");
+      eq = eq.replace(/÷/, "/");
+      eq = eq.split('');
+      eq.splice(-1, 1);
+      eq = eq.join('');
+      answer = eval(eq);
+      console.log("This equation is:", eq);
+      console.log("The answer is:", answer);
+      display.innerText = answer;
+      let keyInput = document.createTextNode(answer);
+      equation.appendChild(keyInput);
+      equalClicked = true;
+    }
   }
 }
 
