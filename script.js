@@ -16,6 +16,16 @@ const allClear = () => {
   }
 };
 
+const clearEntry = () => {
+  return () => {
+    console.log("Clear current entry..");
+    display.innerText = 0;
+    equation.removeChild(equation.childNodes[equation.childNodes.length - 2]);
+    equation.removeChild(equation.childNodes[equation.childNodes.length - 1]);
+    console.log("Equation is:", equation.childNodes[equation.childNodes.length - 1]);
+  }
+}
+
 const displayKey = (i) => {
   return () => {
     // if (/[^1-9]/g.test(equation.childNodes[0].nodeValue)) {
@@ -51,16 +61,6 @@ const numberEntry = (i) => {
     display.innerText = 0;
   }
 };
-
-const clearEntry = () => {
-  return () => {
-    console.log("Clear current entry..");
-    display.innerText = 0;
-    equation.removeChild(equation.childNodes[equation.childNodes.length - 2]);
-    equation.removeChild(equation.childNodes[equation.childNodes.length - 1]);
-    console.log("Equation is:", equation.childNodes[equation.childNodes.length - 1]);
-  }
-}
 
 const calculate = () => {
   return () => {
