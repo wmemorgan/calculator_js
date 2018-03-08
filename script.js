@@ -12,8 +12,8 @@ let equalClicked = false;
 
 const allClear = () => {
     console.log("All clear...");
-    display.innerHTML = '';
-    equation.innerHTML = '';
+    display.innerHTML = 0;
+    equation.innerHTML = 0;
     operatorClicked = false;
     equalClicked = false;
 };
@@ -32,6 +32,11 @@ const clearEntry = () => {
 
 const displayKey = (i) => {
   return () => {
+    if(/0/g.test(display.innerText[0])) {
+      console.log("Replace leading zero...");
+      display.removeChild(display.childNodes[0]);
+    }
+
     if (!display.hasChildNodes() && /[^1-9]/g.test(key[i].innerText)) {
       console.log("Can't start with a zero...");
       return false;
@@ -47,19 +52,24 @@ const displayKey = (i) => {
           allClear();
         }
     }
+
     console.log("You clicked on key " + key[i].innerText);
-    //display.innerText = key[i].innerText;
     let keyInput = document.createTextNode(key[i].innerText);
     display.appendChild(keyInput);
-    //equation.appendChild(keyInput); 
     operatorClicked = false;
     equalClicked = false;
 
     }
 };
 
-const numberEntry = (i) => {
+const operatorEntry = (i) => {
   return () => {
+
+    if (/0/g.test(equation.innerText[0])) {
+      console.log("Replace leading zero...");
+      equation.removeChild(equation.childNodes[0]);
+    }
+
     if (operatorClicked) {
       console.log("Too many operator key entries, bro...");
       return false;
@@ -103,15 +113,15 @@ const calculate = () => {
 //   displayKey(i);
 // }
 
-// display.innerHTML = 0;
-// equation.innerHTML = 0;
+display.innerHTML = 0;
+equation.innerHTML = 0;
 
 for (let i = 0; i < key.length; i++) {
   key[i].addEventListener("click", displayKey(i));
 }
 
 for (let i = 0; i < operator.length; i++) {
-  operator[i].addEventListener("click", numberEntry(i));
+  operator[i].addEventListener("click", operatorEntry(i));
 }
 
 equals.addEventListener("click", calculate());
