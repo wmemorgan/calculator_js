@@ -19,21 +19,22 @@ let equalClicked = false;
 // };
 
 const allClear = () => {
-    console.log("let's clear things up...");
+    console.log("All clear...");
     display.innerHTML = '';
     equation.innerHTML = '';
+    operatorClicked = false;
+    equalClicked = false;
 };
 
 const clearEntry = () => {
   return () => {
     if(equalClicked) {
       allClear();
-    }
-    console.log("Clear current entry..");
-    display.innerText = '';
-    // equation.removeChild(equation.childNodes[equation.childNodes.length - 2]);
-    // equation.removeChild(equation.childNodes[equation.childNodes.length - 1]);
-    console.log("Equation is:", equation.childNodes[equation.childNodes.length - 1]);
+    } else {
+        console.log("Clear entry..");
+        display.innerText = '';
+        console.log("Equation is currently:", equation.innerText);
+      }
   }
 }
 
@@ -65,6 +66,7 @@ const displayKey = (i) => {
     display.appendChild(keyInput); 
     //equation.appendChild(keyInput); 
     operatorClicked = false;
+    equalClicked = false;
   }
 };
 
