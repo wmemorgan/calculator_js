@@ -11,8 +11,8 @@ let ce = document.getElementById("CE");
 const allClear = () => {
   return () => {
     console.log("let's clear things up...");
-    display.innerHTML = 0;
-    equation.innerHTML = 0;
+    display.innerHTML = '';
+    equation.innerHTML = '';
   }
 };
 
@@ -58,7 +58,7 @@ const numberEntry = (i) => {
     equation.appendChild(entry); 
     let operation = document.createTextNode(operator[i].innerText);
     equation.appendChild(operation);
-    display.innerText = 0;
+    display.innerText = '';
   }
 };
 
