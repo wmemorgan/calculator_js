@@ -26,10 +26,13 @@ const allClear = () => {
 
 const clearEntry = () => {
   return () => {
+    if(equalClicked) {
+      allClear();
+    }
     console.log("Clear current entry..");
-    display.innerText = 0;
-    equation.removeChild(equation.childNodes[equation.childNodes.length - 2]);
-    equation.removeChild(equation.childNodes[equation.childNodes.length - 1]);
+    display.innerText = '';
+    // equation.removeChild(equation.childNodes[equation.childNodes.length - 2]);
+    // equation.removeChild(equation.childNodes[equation.childNodes.length - 1]);
     console.log("Equation is:", equation.childNodes[equation.childNodes.length - 1]);
   }
 }
@@ -53,6 +56,7 @@ const displayKey = (i) => {
     // }
     if (/=/.test(equation.innerText[equation.innerText.length - 3] )) {
       console.log("Calculation complete!");
+      equalClicked = false;
       allClear();
     }
     console.log("you clicked on key " + key[i].innerText);
@@ -97,7 +101,6 @@ const calculate = () => {
     let keyInput = document.createTextNode(answer);
     equation.appendChild(keyInput); 
     equalClicked = true;
-    ce.addEventListener("click", allClear);
   }
 }
 
