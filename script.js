@@ -2,6 +2,7 @@ let screen = document.getElementById("screen");
 let display = document.getElementById("display");
 let equation = document.getElementById("equation");
 let key = document.getElementsByClassName("key");
+let operator = document.getElementsByClassName("operator");
 let zeroKey = document.getElementById("zerokey");
 let equals = document.getElementById("equals");
 let ac = document.getElementById("AC");
