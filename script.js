@@ -18,26 +18,37 @@ const allClear = () => {
 
 const displayKey = (i) => {
   return () => {
-    if (/[^1-9]/g.test(equation.childNodes[0].nodeValue)) {
-      equation.removeChild(equation.childNodes[0]);
-    }
+    // if (/[^1-9]/g.test(equation.childNodes[0].nodeValue)) {
+    //   equation.removeChild(equation.childNodes[0]);
+    // }
 
-    if ( /[^0-9]/g.test(key[i].innerText) 
-        && /[^0-9]/g.test(equation.innerText[equation.innerText.length - 1])
-      ) {
-        console.log("Invalid key, bro...");
-        if (!equation.hasChildNodes()) {
-          let resetText = document.createTextNode("0");
-          equation.appendChild(resetText);
-        }
-        // return equation.innerText[equation.innerText.length - 1] = 0;
-        return false;
-    }
+    // if ( /[^0-9]/g.test(key[i].innerText) 
+    //     && /[^0-9]/g.test(equation.innerText[equation.innerText.length - 1])
+    //   ) {
+    //     console.log("Invalid key, bro...");
+    //     if (!equation.hasChildNodes()) {
+    //       let resetText = document.createTextNode("0");
+    //       equation.appendChild(resetText);
+    //     }
+    //     // return equation.innerText[equation.innerText.length - 1] = 0;
+    //     return false;
+    // }
 
     console.log("you clicked on key " + key[i].innerText);
-    display.innerText = key[i].innerText;
+    //display.innerText = key[i].innerText;
     let keyInput = document.createTextNode(key[i].innerText);
-    equation.appendChild(keyInput); 
+    display.appendChild(keyInput); 
+    //equation.appendChild(keyInput); 
+  }
+};
+
+const numberEntry = (i) => {
+  return () => {
+    let entry = document.createTextNode(display.innerText);
+    equation.appendChild(entry); 
+    let operation = document.createTextNode(operator[i].innerText);
+    equation.appendChild(operation);
+    display.innerText = 0;
   }
 };
 
@@ -74,11 +85,15 @@ const calculate = () => {
 //   displayKey(i);
 // }
 
-display.innerHTML = 0;
-equation.innerHTML = 0;
+// display.innerHTML = 0;
+// equation.innerHTML = 0;
 
 for (let i = 0; i < key.length; i++) {
   key[i].addEventListener("click", displayKey(i));
+}
+
+for (let i = 0; i < operator.length; i++) {
+  operator[i].addEventListener("click", numberEntry(i));
 }
 
 equals.addEventListener("click", calculate());
