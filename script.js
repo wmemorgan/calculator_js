@@ -73,13 +73,21 @@ const operatorEntry = (i) => {
     if (operatorClicked) {
       console.log("Too many operator key entries, bro...");
       return false;
+    } else if (equalClicked) {
+        equation.innerHTML = '';
+        let entry = document.createTextNode(display.innerText);
+        equation.appendChild(entry);
+        let operation = document.createTextNode(operator[i].innerText);
+        equation.appendChild(operation);
+        display.innerText = '';
+        operatorClicked = true;
     } else {
-      let entry = document.createTextNode(display.innerText);
-      equation.appendChild(entry);
-      let operation = document.createTextNode(operator[i].innerText);
-      equation.appendChild(operation);
-      display.innerText = '';
-      operatorClicked = true;
+        let entry = document.createTextNode(display.innerText);
+        equation.appendChild(entry);
+        let operation = document.createTextNode(operator[i].innerText);
+        equation.appendChild(operation);
+        display.innerText = '';
+        operatorClicked = true;
     }
   }
 };
