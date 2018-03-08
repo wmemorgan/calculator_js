@@ -91,20 +91,23 @@ const calculate = () => {
       return false;
     } 
     else {
+      let entry = document.createTextNode(display.innerText);
+      equation.appendChild(entry);
       let answer = 0;
       let eq = equation.innerText;
+      console.log("Initial equation...", equation.innerText);
       eq = eq.replace(/×/, "*");
       eq = eq.replace(/÷/, "/");
-      eq = eq.split('');
-      eq.splice(-1, 1);
-      eq = eq.join('');
       answer = eval(eq);
       console.log("This equation is:", eq);
       console.log("The answer is:", answer);
+      let equalTo = document.createTextNode(equals.innerText);
+      equation.appendChild(equalTo);
       display.innerText = answer;
       let keyInput = document.createTextNode(answer);
       equation.appendChild(keyInput);
       equalClicked = true;
+      console.log("Final equation...", equation.innerText);
     }
   }
 }
