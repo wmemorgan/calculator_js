@@ -1,9 +1,15 @@
 body, html {
   height: 100%;
   display: grid;
+  background-color: #818181;
+}
+
+body {
+  
 }
 
 .container {
+    background-color: #E0D8D0;
     border: 1px solid black;
     max-width: 350px;
     margin: auto;
@@ -21,18 +27,21 @@ body, html {
 }
 
 #screen {
+  background-color: #C2C4AB;
   text-align: right;
   width: 93%;
   height: 50px;
   margin: 0px 0px 10px 0px;
   border: 1px solid black;
-  padding: 30px 5px 0px 0px;
+  padding: 10px;
   grid-column: 1 / 1;
   display: grid;
   grid-template-columns: auto;
 }
 
 #display {
+  font-size: 20pt;
+  font-weight: bold;
   grid-column: 1 / 1;
 }
 
@@ -52,6 +61,8 @@ body, html {
 }
 
 .button {
+  color: white;
+  background-color: #3A3A3A;
   border: 1px solid black;
   margin: 10px;
   padding: 10px;
@@ -62,11 +73,11 @@ body, html {
 }
 
 #AC {
-  background-color: red;
+  background-color: #B00A3E;
 }
 
 #CE {
-  background-color: yellow;
+  background-color: rgb(255, 81, 0);
 }
 
 #equals {
