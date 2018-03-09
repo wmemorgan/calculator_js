@@ -50,6 +50,7 @@ const displayKey = (i) => {
           console.log("Calculation complete!");
           equalClicked = false;
           allClear();
+          display.removeChild(display.childNodes[0]);
         }
     }
 
