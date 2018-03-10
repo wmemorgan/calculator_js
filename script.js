@@ -1,6 +1,7 @@
 let screen = document.getElementById("screen");
 let display = document.getElementById("display");
 let equation = document.getElementById("equation");
+let entryLog = document.getElementById("entryLog");
 let key = document.getElementsByClassName("key");
 let operator = document.getElementsByClassName("operator");
 let zeroKey = document.getElementById("zerokey");
@@ -62,6 +63,40 @@ const displayKey = (i) => {
 
     }
 };
+
+const displayKey = (i) => {
+  return () => {
+    if(/0/g.test(display.innerText[0])) {
+      console.log("Replace leading zero...");
+      display.removeChild(display.childNodes[0]);
+    }
+
+    if (!display.hasChildNodes() && /[^1-9]/g.test(key[i].innerText)) {
+      console.log("Can't start with a zero...");
+      return false;
+    }
+
+    if (/=/.test(equation.innerText)) {
+      if (/[^1-9]/g.test(key[i].innerText)) {
+        console.log("Can't start with a zero...");
+        return false;
+      } else {
+          console.log("Calculation complete!");
+          equalClicked = false;
+          allClear();
+          display.removeChild(display.childNodes[0]);
+        }
+    }
+
+    console.log("You clicked on key " + key[i].innerText);
+    let keyInput = document.createTextNode(key[i].innerText);
+    display.appendChild(keyInput);
+    operatorClicked = false;
+    equalClicked = false;
+
+    }
+};
+
 
 const operatorEntry = (i) => {
   return () => {
