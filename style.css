@@ -40,6 +40,10 @@ body, html {
   grid-column: 1 / 1;
 }
 
+#entryLog {
+  grid-column: 1 / 1;
+}
+
 .keypad {
   width: 100%;
   grid-column: 1/1;
