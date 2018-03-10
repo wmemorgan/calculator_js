@@ -64,14 +64,14 @@ const displayKey = (i) => {
     }
 };
 
-const displayKey = (i) => {
+const displayKeyLog = (i) => {
   return () => {
-    if(/0/g.test(display.innerText[0])) {
+    if (/0/g.test(entryLog.innerText[0])) {
       console.log("Replace leading zero...");
-      display.removeChild(display.childNodes[0]);
+      entryLog.removeChild(entryLog.childNodes[0]);
     }
 
-    if (!display.hasChildNodes() && /[^1-9]/g.test(key[i].innerText)) {
+    if (!entryLog.hasChildNodes() && /[^1-9]/g.test(key[i].innerText)) {
       console.log("Can't start with a zero...");
       return false;
     }
@@ -81,22 +81,21 @@ const displayKey = (i) => {
         console.log("Can't start with a zero...");
         return false;
       } else {
-          console.log("Calculation complete!");
-          equalClicked = false;
-          allClear();
-          display.removeChild(display.childNodes[0]);
-        }
+        console.log("Calculation complete!");
+        equalClicked = false;
+        allClear();
+        entryLog.removeChild(entryLog.childNodes[0]);
+      }
     }
 
     console.log("You clicked on key " + key[i].innerText);
     let keyInput = document.createTextNode(key[i].innerText);
-    display.appendChild(keyInput);
+    entryLog.appendChild(keyInput);
     operatorClicked = false;
     equalClicked = false;
 
-    }
+  }
 };
-
 
 const operatorEntry = (i) => {
   return () => {
@@ -165,6 +164,7 @@ equation.innerHTML = 0;
 
 for (let i = 0; i < key.length; i++) {
   key[i].addEventListener("click", displayKey(i));
+  key[i].addEventListener("click", displayKeyLog(i));
 }
 
 for (let i = 0; i < operator.length; i++) {
