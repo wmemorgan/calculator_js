@@ -127,6 +127,14 @@ const operatorEntry = (i) => {
   }
 };
 
+const operatorEntryLog = (i) => {
+  return () => {
+      let operation = document.createTextNode(operator[i].innerText);
+      entryLog.appendChild(operation);
+  }
+};
+
+
 const calculate = () => {
   return () => {
     if (equalClicked) {
@@ -169,6 +177,7 @@ for (let i = 0; i < key.length; i++) {
 
 for (let i = 0; i < operator.length; i++) {
   operator[i].addEventListener("click", operatorEntry(i));
+  operator[i].addEventListener("click", operatorEntryLog(i));
 }
 
 equals.addEventListener("click", calculate());
