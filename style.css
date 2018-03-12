@@ -1,13 +1,25 @@
 body, html {
   height: 100%;
   display: grid;
+  background-color: #818181;
+  font-family: 'Orbitron', sans-serif;
+}
+
+body {
+  
 }
 
 .container {
-    border: 1px solid black;
-    max-width: 350px;
+    /* background-color: rgb(224, 216, 208); */
+    background: linear-gradient(45deg, rgba(192,192,192,1) 0%, rgba(255,255,255,1) 50%, rgba(128,128,128,1) 100%); /* w3c */
+    border: 2px double #908B85;
+    /* border-bottom: 15px solid rgba(153, 148, 141, 0.5); */
+    border-radius: 20px;
+    box-shadow: 10px 10px 35px 0px rgba(0,0,0,0.75);
+    /* //box-shadow: 5px 5px rgba(0, 0, 0, 0.8); */
+    max-width: 300px;
     margin: auto;
-    padding: 20px;
+    padding: 0px 20px 15px 20px;
     display: grid;
     grid-template-columns: auto;
     justify-items: center;
@@ -15,28 +27,32 @@ body, html {
 }
 
 .heading {
-  /* text-align: center; */
+  text-transform: uppercase;
   grid-column: 1 / 1;
-
 }
 
 #screen {
+  background-color: #C2C4AB;
   text-align: right;
   width: 93%;
   height: 50px;
   margin: 0px 0px 10px 0px;
-  border: 1px solid black;
-  padding: 30px 5px 0px 0px;
+  border: 2px solid #B3B59D;
+  border-radius: 5px;
+  padding: 10px;
   grid-column: 1 / 1;
   display: grid;
   grid-template-columns: auto;
 }
 
 #display {
+  font-size: 20pt;
+  font-weight: bold;
   grid-column: 1 / 1;
 }
 
 #equation {
+  color: gray;
   grid-column: 1 / 1;
 }
 
@@ -44,29 +60,41 @@ body, html {
   width: 100%;
   grid-column: 1/1;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 1fr);
   justify-content: space-evenly;
   /* padding: 20px; */
-  
-  
 }
 
 .button {
+  color: white;
+  background-color: #3A3A3A;
   border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
+  border-radius: 7px;
+  box-shadow: 0px 3px black;
+  margin: 6px;
+  padding: 8px;
   text-align: center;
+  
   /* align-self: center; */
   /* justify-self: center; */
   
 }
 
+.operator {
+  /* font-size: 2.0ex;  */
+  font-weight: bold;
+}
+
 #AC {
-  background-color: red;
+  border: 0px;
+  background-color: rgb(176, 10, 62);
+  box-shadow: 0px 3px rgb(109, 12, 38);
 }
 
 #CE {
-  background-color: yellow;
+  border: 0px;
+  background-color: rgb(255, 81, 0);
+  box-shadow: 0px 3px rgb(188, 83, 24);
 }
 
 #equals {
