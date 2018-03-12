@@ -78,11 +78,15 @@ body {
 }
 
 #AC {
-  background-color: #B00A3E;
+  border: 0px;
+  background-color: rgb(176, 10, 62);
+  box-shadow: 0px 3px rgb(109, 12, 38);
 }
 
 #CE {
+  border: 0px;
   background-color: rgb(255, 81, 0);
+  box-shadow: 0px 3px rgb(188, 83, 24);
 }
 
 #equals {
