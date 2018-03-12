@@ -121,10 +121,6 @@ const calculate = () => {
   }
 }
 
-// const addItemFeatures = (i) => {
-//   displayKey(i);
-// }
-
 display.innerHTML = 0;
 equation.innerHTML = 0;
 
