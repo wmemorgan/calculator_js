@@ -105,7 +105,7 @@ const calculate = () => {
       let answer = 0;
       let eq = equation.innerText;
       console.log("Initial equation...", equation.innerText);
-      eq = eq.replace(/×/, "*");
+      eq = eq.replace(/x/, "*");
       eq = eq.replace(/÷/, "/");
       answer = eval(eq);
       console.log("This equation is:", eq);
