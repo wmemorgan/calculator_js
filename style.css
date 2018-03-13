@@ -33,19 +33,20 @@ body, html {
   margin: 0px 0px 10px 0px;
   border: 2px solid #B3B59D;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
   grid-column: 1 / 1;
   display: grid;
   grid-template-columns: auto;
 }
 
 #display {
-  font-size: 20pt;
+  font-size: 2em;
   font-weight: bold;
   grid-column: 1 / 1;
 }
 
 #equation {
+  font-size: 0.8em;
   color: gray;
   grid-column: 1 / 1;
 }
