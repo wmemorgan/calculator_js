@@ -102,12 +102,11 @@ const calculate = () => {
     else {
       let entry = document.createTextNode(display.innerText);
       equation.appendChild(entry);
-      // let answer = 0;
       let eq = equation.innerText;
       console.log("Initial equation...", equation.innerText);
       eq = eq.replace(/x/, "*");
       eq = eq.replace(/÷/, "/");
-      let answer = parseFloat(eval(eq)).toFixed(6);
+      let answer = parseFloat(eval(eq)).toFixed(5);
       console.log("This equation is:", eq);
       console.log("The answer is:", answer);
       let equalTo = document.createTextNode(equals.innerText);
