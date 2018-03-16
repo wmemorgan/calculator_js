@@ -106,13 +106,20 @@ const calculate = () => {
       console.log("Initial equation...", equation.innerText);
       eq = eq.replace(/x/, "*");
       eq = eq.replace(/÷/, "/");
-      let answer = parseFloat(eval(eq)).toFixed(5);
+      let answer = () => {
+        //Format answer for whole numbers or numbers with decimals
+        if ((eval(eq) % 1) === 0) {
+          return parseInt(eval(eq));
+        } else {
+          return +parseFloat(eval(eq)).toFixed(5);
+        }
+      } 
       console.log("This equation is:", eq);
       console.log("The answer is:", answer);
       let equalTo = document.createTextNode(equals.innerText);
       equation.appendChild(equalTo);
-      display.innerText = answer;
-      let keyInput = document.createTextNode(answer);
+      display.innerText = answer();
+      let keyInput = document.createTextNode(answer());
       equation.appendChild(keyInput);
       equalClicked = true;
       console.log("Final equation...", equation.innerText);
