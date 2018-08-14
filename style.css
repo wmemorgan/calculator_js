@@ -1,7 +1,27 @@
+/*-----CSS Variables----*/
+/*--Basic color scheme--*/
+:root {
+  --dark-primary-color: #022140;
+  --default-primary-color: #265077;
+  --light-primary-color: #C5CAE9;
+  --text-primary-color: #FFFFFF;
+  --accent-color: #51a7f8;
+  --primary-bg-color: #FFFFFF;
+  --primary-text-color: #595959;
+  --emphasis-text-color: #212121;
+  --secondary-text-color: #1E4258;
+  --divider-color: var(--dark-primary-color);
+  --overlay-bg-color: #1E4258;
+  --overlay-text-color: #ccc;
+  --container-bg-color: #FCFCFC;
+  --background-image: url(images/bg_code_corp_light.jpg); 
+}
+
+
 body, html {
   height: 100%;
   display: grid;
-  background-color: #818181;
+  background-color: var(--default-primary-color);
   font-family: 'Orbitron', sans-serif;
 }
 
